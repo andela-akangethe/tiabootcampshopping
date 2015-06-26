@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="css/delivery.css" />
+</head>
+
+<body class="well">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">TIA Shopping</a>
+      </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="shopping.html" target="_blank">Cart</a></li>
+            <li  class="active"><a href="delivery.html" target="_blank">Delivery</a></li>
+          </ul>
+    </div>
+    </nav>
+    <div id="container">
+
+        <div id="header"> Orders to perform.</div>
+
+            <div class="task-list task-container" id="pending">
+            <h3>Pending</h3>
+        </div>
+
+        <div class="task-list task-container" id="inProgress">
+            <h3>In Progress</h3>
+        </div>
+
+        <div class="task-list task-container" id="completed">
+            <h3>Completed</h3>
+        </div>
+
+        <div class="task-list">
+            <h3>Add a task</h3>
+            <form id="todo-form">
+                <input type="text" placeholder="Title" />
+                <textarea placeholder="Description"></textarea>
+                <input type="text" id="datepicker" placeholder="Due Date (dd/mm/yyyy)" />
+                <input type="button" class="btn btn-primary" value="Add Task" onclick="todo.add();" />
+            </form>
+
+            <input type="button" class="btn btn-primary" value="Clear Data" onclick="todo.clear();" />
+
+            <div id="delete-div">
+                Drag Here to Delete
+            </div>
+        </div>
+
+        <div style="clear:both;"></div>
+        <script type="text/javascript" src="lib/jQuery/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/delivery.js"></script>
+
+        <script type="text/javascript">
+            $( "#datepicker" ).datepicker();
+            $( "#datepicker" ).datepicker("option", "dateFormat", "dd/mm/yy");
+
+            $(".task-container").droppable();
+            $(".todo-task").draggable({ revert: "valid", revertDuration:200 });
+            todo.init();
+        </script>
+    </div>
+</body>
+</html>
